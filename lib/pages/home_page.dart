@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/widgets/widgets.dart';
+import 'package:restaurant_app/data/api/api_service.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_app/provider/restaurant_list_provider.dart';
+
+import '../widgets/widgets.dart';
 
 class HomePage extends StatelessWidget {
   static const routeName = '/home-page';
@@ -11,10 +15,9 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Nearest Restaurant'),
       ),
-      body: Column(
-        children: [
-          RestaurantListWidget(),
-        ],
+      body: ChangeNotifierProvider<RestaurantlistProvider>(
+        create: (context) => RestaurantlistProvider(apiService: ApiService()),
+        child: const RestaurantListWidget(),
       ),
     );
   }

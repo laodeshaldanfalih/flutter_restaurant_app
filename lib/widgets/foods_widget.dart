@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/data/model/restaurant.dart';
+
+import '../data/model/model.dart';
 
 class FoodsWidget extends StatelessWidget {
-  final Restaurant restaurant;
+  final Restaurantt restaurant;
   final String image;
   const FoodsWidget({Key? key, required this.restaurant, required this.image})
       : super(key: key);

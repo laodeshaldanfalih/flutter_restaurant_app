@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/data/model/restaurant.dart';
+import 'package:restaurant_app/data/model/model.dart';
 
 class DescriptionWidget extends StatelessWidget {
-  final Restaurant restaurant;
+  final Restaurantt restaurant;
   const DescriptionWidget({Key? key, required this.restaurant})
       : super(key: key);
 
@@ -20,9 +20,7 @@ class DescriptionWidget extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.only(top: 15, left: 15, right: 15),
-          child: Text(
-            restaurant.description,
-          ),
+          child: Text(restaurant.description),
         ),
       ],
     );
