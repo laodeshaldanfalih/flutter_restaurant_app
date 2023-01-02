@@ -11,11 +11,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Nearest Restaurant'),
-      ),
-      body: ChangeNotifierProvider<RestaurantlistProvider>(
+    return Material(
+      child: ChangeNotifierProvider<RestaurantlistProvider>(
         create: (context) => RestaurantlistProvider(apiService: ApiService()),
         child: const RestaurantListWidget(),
       ),
