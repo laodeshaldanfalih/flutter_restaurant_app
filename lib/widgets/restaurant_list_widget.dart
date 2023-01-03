@@ -34,12 +34,12 @@ class RestaurantListWidget extends StatelessWidget {
                 ),
               ],
             ),
-            body: ListView.builder(
-                itemBuilder: (context, index) {
-                  var restaurant = state.result.restaurants[index];
-                  return RestaurantListCard(restaurant: restaurant);
-                },
-                itemCount: state.result.restaurants.length),
+            // body: ListView.builder(
+            //     itemBuilder: (context, index) {
+            //       var restaurant = state.result.restaurants[index];
+            //       return RestaurantListCard(restaurant: restaurant);
+            //     },
+            //     itemCount: state.result.restaurants.length),
           );
         } else if (state.state == ResultState.noData) {
           return Center(

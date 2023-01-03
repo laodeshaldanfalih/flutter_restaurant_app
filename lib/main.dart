@@ -25,12 +25,12 @@ class MyApp extends StatelessWidget {
               secondary: secondaryColor,
             ),
       ),
-      initialRoute: HomePage.routeName,
+      initialRoute: SearchPage.routeName,
       routes: {
         HomePage.routeName: (context) => const HomePage(),
         RestaurantDetailPage.routeName: (context) => RestaurantDetailPage(
               restaurants:
-                  ModalRoute.of(context)?.settings.arguments as Restaurant,
+                  ModalRoute.of(context)?.settings.arguments as Restauranttt,
             ),
         SearchPage.routeName: (context) => const SearchPage()
       },

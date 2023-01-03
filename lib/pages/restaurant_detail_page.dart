@@ -7,7 +7,7 @@ import 'package:restaurant_app/widgets/widgets.dart';
 
 class RestaurantDetailPage extends StatelessWidget {
   static const routeName = '/detail-page';
-  Restaurant restaurants;
+  Restauranttt restaurants;
   RestaurantDetailPage({super.key, required this.restaurants});
 
   @override

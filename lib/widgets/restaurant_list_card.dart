@@ -3,7 +3,7 @@ import 'package:restaurant_app/data/model/model.dart';
 import 'package:restaurant_app/pages/pages.dart';
 
 class RestaurantListCard extends StatelessWidget {
-  Restaurant restaurant;
+  Restauranttt restaurant;
   RestaurantListCard({super.key, required this.restaurant});
 
   @override
