@@ -50,7 +50,13 @@ class RestaurantListWidget extends StatelessWidget {
         } else if (state.state == ResultState.error) {
           return Center(
             child: Material(
-              child: Text(state.message),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.network_wifi_sharp),
+                  Text('Sorry, no internet connection...'),
+                ],
+              ),
             ),
           );
         } else {

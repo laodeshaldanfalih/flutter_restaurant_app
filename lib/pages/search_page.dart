@@ -80,13 +80,7 @@ class _SearchPageState extends State<SearchPage> {
                           }
                           query = myController.text;
                           print(query);
-                          // ApiService().restaurantSearch(query);
-                          // state.onSearch(myController.text);
-                          // _futureRestaurantSearch =
-                          //     ApiService().fetchRestaurantSerach(query);
-                          Provider.of<RestaurantSearchProvider>(context,
-                                  listen: false)
-                              .onSearch(query);
+                          state.fetchAllRestaurantData(query);
                         },
                         child: const Icon(Icons.search),
                       ),
@@ -108,9 +102,15 @@ class _SearchPageState extends State<SearchPage> {
               ),
             );
           } else if (state.state == ResultState.error) {
-            return Center(
-              child: Material(
-                child: Text(state.message),
+            return Scaffold(
+              body: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Icon(Icons.network_wifi_sharp),
+                    Text('Sorry, no internet connection...'),
+                  ],
+                ),
               ),
             );
           } else {
