@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/data/model/model.dart';
-import 'package:restaurant_app/data/api/api_service.dart';
 
 void addReview(context, TextEditingController myController1,
     TextEditingController myController2) {
