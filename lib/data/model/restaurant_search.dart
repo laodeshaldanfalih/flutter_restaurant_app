@@ -1,3 +1,68 @@
+// class RestaurantSearch {
+//   RestaurantSearch({
+//     required this.error,
+//     required this.founded,
+//     required this.restaurants,
+//   });
+
+//   final bool error;
+//   final int founded;
+//   final List<Restauranttt> restaurants;
+
+//   factory RestaurantSearch.fromJson(Map<String, dynamic> json) =>
+//       RestaurantSearch(
+//         error: json["error"],
+//         founded: json["founded"],
+//         restaurants: List<Restauranttt>.from(
+//             json["restaurants"].map((x) => Restauranttt.fromJson(x))),
+//       );
+
+//   Map<String, dynamic> toJson() => {
+//         "error": error,
+//         "founded": founded,
+//         "restaurants": List<dynamic>.from(restaurants.map((x) => x.toString())),
+//       };
+// }
+
+// class Restauranttt {
+//   Restauranttt({
+//     required this.id,
+//     required this.name,
+//     required this.description,
+//     required this.pictureId,
+//     required this.city,
+//     required this.rating,
+//   });
+
+//   String id;
+//   String name;
+//   String description;
+//   String pictureId;
+//   String city;
+//   double rating;
+
+//   factory Restauranttt.fromJson(Map<String, dynamic> json) => Restauranttt(
+//         id: json["id"],
+//         name: json["name"],
+//         description: json["description"],
+//         pictureId: json["pictureId"],
+//         city: json["city"],
+//         rating: json["rating"].toDouble(),
+//       );
+// }
+
+// To parse this JSON data, do
+//
+//     final restaurantSearch = restaurantSearchFromJson(jsonString);
+
+import 'dart:convert';
+
+RestaurantSearch? restaurantSearchFromJson(String str) =>
+    RestaurantSearch.fromJson(json.decode(str));
+
+String restaurantSearchToJson(RestaurantSearch? data) =>
+    json.encode(data!.toJson());
+
 class RestaurantSearch {
   RestaurantSearch({
     required this.error,
@@ -16,6 +81,14 @@ class RestaurantSearch {
         restaurants: List<Restauranttt>.from(
             json["restaurants"].map((x) => Restauranttt.fromJson(x))),
       );
+
+  Map<String, dynamic> toJson() => {
+        "error": error,
+        "founded": founded,
+        "restaurants": restaurants == null
+            ? []
+            : List<dynamic>.from(restaurants.map((x) => x.toJson())),
+      };
 }
 
 class Restauranttt {
@@ -43,4 +116,13 @@ class Restauranttt {
         city: json["city"],
         rating: json["rating"].toDouble(),
       );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "description": description,
+        "pictureId": pictureId,
+        "city": city,
+        "rating": rating,
+      };
 }
