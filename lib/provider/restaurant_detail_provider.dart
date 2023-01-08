@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_app/data/api/api_service.dart';
 import 'package:restaurant_app/data/model/model.dart';
 
-enum ResultState { loading, noData, hasData, error }
+import '../utils/result_state.dart';
 
 class RestaurantDetailProvider extends ChangeNotifier {
   Restauranttt restaurants;

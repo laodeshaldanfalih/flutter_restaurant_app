@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurant_app/provider/database_provider.dart';
 import 'package:restaurant_app/widgets/widgets.dart';
 import '../data/model/model.dart';
 
 class RestaurantDetailWidget extends StatelessWidget {
   Restaurantt restaurant;
-  RestaurantDetailWidget({super.key, required this.restaurant});
+  Restauranttt restauranttt;
+  RestaurantDetailWidget(
+      {super.key, required this.restaurant, required this.restauranttt});
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +18,14 @@ class RestaurantDetailWidget extends StatelessWidget {
         children: [
           Stack(
             children: [
+              Container(
+                height: 295,
+                color: Colors.transparent,
+              ),
               Image.network(
                   'https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}'),
               Positioned(
-                bottom: 0,
+                bottom: 25,
                 child: Container(
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
@@ -45,10 +53,49 @@ class RestaurantDetailWidget extends StatelessWidget {
                           restaurant.rating.toString(),
                           style: const TextStyle(
                               color: Colors.white, fontSize: 20),
-                        )
+                        ),
                       ],
                     ),
                   ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 35,
+                child: Consumer<DatabaseProvider>(
+                  builder: (context, provider, child) {
+                    return FutureBuilder<bool>(
+                      future: provider.isFavorited(restaurant.id),
+                      builder: (context, snapshot) {
+                        var isFavorited = snapshot.data ?? false;
+                        return CircleAvatar(
+                          backgroundColor: Colors.grey,
+                          radius: 20,
+                          child: isFavorited
+                              ? IconButton(
+                                  iconSize: 25,
+                                  color: Colors.black,
+                                  onPressed: () =>
+                                      provider.removeFavorite(restauranttt.id),
+                                  icon: const Icon(
+                                    Icons.favorite,
+                                  ),
+                                )
+                              : IconButton(
+                                  iconSize: 25,
+                                  color: Colors.black,
+                                  onPressed: () {
+                                    print(restauranttt.id);
+                                    provider.addFavorite(restauranttt);
+                                  },
+                                  icon: const Icon(
+                                    Icons.favorite_border,
+                                  ),
+                                ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
             ],
@@ -64,44 +111,6 @@ class RestaurantDetailWidget extends StatelessWidget {
           FoodsWidget(restaurant: restaurant, image: 'assets/images/foods.png'),
           DrinksWidget(
               restaurant: restaurant, image: 'assets/images/drinks.png'),
-          // Row(
-          //   children: [
-          //     Container(
-          //       margin: const EdgeInsets.only(top: 15, left: 15, right: 15),
-          //       child: const Text(
-          //         'Testimony',
-          //         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          //       ),
-          //     ),
-          //     GestureDetector(
-          //       onTap: () {
-          //         setState(() {
-          //           addReview(
-          //             context,
-          //             myController1,
-          //             myController2,
-          //           );
-
-          //           print('aa');
-          //         });
-          //       },
-          //       child: Container(
-          //         margin: const EdgeInsets.only(top: 15),
-          //         decoration: BoxDecoration(
-          //             color: const Color.fromARGB(71, 189, 189, 189),
-          //             borderRadius: BorderRadius.circular(10)),
-          //         child: const Padding(
-          //           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-          //           child: Text(
-          //             '+ Write Your Review',
-          //             style:
-          //                 TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
           ReviewWidget(
             restaurant: restaurant,
           ),

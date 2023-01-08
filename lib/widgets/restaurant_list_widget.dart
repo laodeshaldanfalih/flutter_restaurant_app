@@ -124,14 +124,15 @@ class _RestaurantListWidgetState extends State<RestaurantListWidget> {
           itemBuilder: (context, index) {
             var restaurant = widget.state.result.restaurants[index];
             return GestureDetector(
-                onPanDown: (details) {
-                  setState(() {
-                    if (widget.query == ' ') {
-                      widget.search = true;
-                    }
-                  });
-                },
-                child: RestaurantSearchListCard(restaurant: restaurant));
+              onPanDown: (details) {
+                setState(() {
+                  if (widget.query == ' ') {
+                    widget.search = true;
+                  }
+                });
+              },
+              child: RestaurantSearchListCard(restaurant: restaurant),
+            );
           },
           itemCount: widget.state.result.restaurants.length),
     );
