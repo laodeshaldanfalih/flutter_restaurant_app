@@ -4,6 +4,8 @@ import 'package:restaurant_app/data/model/model.dart';
 import 'package:restaurant_app/pages/restaurant_detail_page.dart';
 import 'package:restaurant_app/provider/database_provider.dart';
 
+import '../common/navigation.dart';
+
 class RestaurantSearchListCard extends StatelessWidget {
   Restauranttt restaurant;
   RestaurantSearchListCard({super.key, required this.restaurant});
@@ -66,9 +68,11 @@ class RestaurantSearchListCard extends StatelessWidget {
                   ]),
                 ],
               ),
-              onTap: () => Navigator.pushNamed(
-                  context, RestaurantDetailPage.routeName,
-                  arguments: restaurant),
+              // onTap: () => Navigator.pushNamed(
+              //     context, RestaurantDetailPage.routeName,
+              //     arguments: restaurant),
+              onTap: () => Navigation.intentWithData(
+                  RestaurantDetailPage.routeName, restaurant),
             );
           },
         );

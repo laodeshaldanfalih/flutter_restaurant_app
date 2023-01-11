@@ -37,20 +37,27 @@ class _RestaurantListWidgetState extends State<RestaurantListWidget> {
               ),
               title: const Text('Nearest Restaurant'),
               actions: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        widget.search = !widget.search;
-                      });
-                    },
-                    child: const Icon(
-                      Icons.search,
-                      size: 30,
-                    ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      widget.search = !widget.search;
+                    });
+                  },
+                  child: const Icon(
+                    Icons.search,
+                    size: 30,
                   ),
-                )
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, SettingsPage.routeName),
+                    child: const Icon(Icons.settings)),
+                const SizedBox(
+                  width: 20,
+                ),
               ],
             )
           : AppBar(

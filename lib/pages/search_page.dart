@@ -57,6 +57,7 @@ class _SearchPageState extends State<SearchPage> {
                     ),
                   ),
                 ),
+                const Icon(Icons.settings)
               ],
             ),
             body: Center(
