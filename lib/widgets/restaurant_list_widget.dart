@@ -10,11 +10,12 @@ class RestaurantListWidget extends StatefulWidget {
   final RestaurantSearchProvider state;
 
   RestaurantListWidget(
-      {super.key,
+      {Key? key,
       required this.search,
       required this.myController,
       required this.query,
-      required this.state});
+      required this.state})
+      : super(key: key);
   @override
   State<RestaurantListWidget> createState() => _RestaurantListWidgetState();
 }

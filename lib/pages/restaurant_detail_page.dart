@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:restaurant_app/data/api/api_service.dart';
 import 'package:restaurant_app/data/db/database_helper.dart';
 import 'package:restaurant_app/data/model/model.dart';
@@ -14,13 +15,13 @@ class RestaurantDetailPage extends StatelessWidget {
   static const routeName = '/detail-page';
   Restauranttt restaurants;
 
-  RestaurantDetailPage({super.key, required this.restaurants});
+  RestaurantDetailPage({Key? key, required this.restaurants}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => RestaurantDetailProvider(
-          apiService: ApiService(), restaurants: restaurants),
+          apiService: ApiService(Client()), restaurants: restaurants),
       child: Consumer<RestaurantDetailProvider>(
         builder: (context, state, child) {
           if (state.state == ResultState.loading) {

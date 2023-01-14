@@ -8,7 +8,8 @@ class RestaurantDetailWidget extends StatelessWidget {
   Restaurantt restaurant;
   Restauranttt restauranttt;
   RestaurantDetailWidget(
-      {super.key, required this.restaurant, required this.restauranttt});
+      {Key? key, required this.restaurant, required this.restauranttt})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,42 +23,46 @@ class RestaurantDetailWidget extends StatelessWidget {
                 height: 295,
                 color: Colors.transparent,
               ),
-              Image.network(
-                  'https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}'),
-              Positioned(
-                bottom: 25,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(40),
+              Stack(
+                children: [
+                  Image.network(
+                      'https://restaurant-api.dicoding.dev/images/large/${restaurant.pictureId}'),
+                  Positioned(
+                    bottom: 0,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(40),
+                        ),
+                        color: Colors.black38,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 5),
+                        child: Row(
+                          children: [
+                            Text(
+                              restaurant.name,
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 25),
+                            ),
+                            const SizedBox(width: 10),
+                            const Icon(
+                              Icons.star,
+                              color: Colors.orange,
+                              size: 25,
+                            ),
+                            Text(
+                              restaurant.rating.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 20),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    color: Colors.black38,
                   ),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    child: Row(
-                      children: [
-                        Text(
-                          restaurant.name,
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 25),
-                        ),
-                        const SizedBox(width: 10),
-                        const Icon(
-                          Icons.star,
-                          color: Colors.orange,
-                          size: 25,
-                        ),
-                        Text(
-                          restaurant.rating.toString(),
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 20),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                ],
               ),
               Positioned(
                 bottom: 0,

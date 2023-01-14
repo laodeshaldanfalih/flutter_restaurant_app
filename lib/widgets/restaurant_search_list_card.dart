@@ -8,7 +8,8 @@ import '../common/navigation.dart';
 
 class RestaurantSearchListCard extends StatelessWidget {
   Restauranttt restaurant;
-  RestaurantSearchListCard({super.key, required this.restaurant});
+  RestaurantSearchListCard({Key? key, required this.restaurant})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

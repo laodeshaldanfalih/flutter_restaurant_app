@@ -1,18 +1,21 @@
+// @dart=2.9
 import 'dart:io';
-
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurant_app/common/navigation.dart';
 import 'package:restaurant_app/data/model/model.dart';
-import 'package:restaurant_app/pages/setting_page.dart';
 import 'package:restaurant_app/provider/database_provider.dart';
+import 'package:restaurant_app/provider/preferences_provider.dart';
 import 'package:restaurant_app/provider/restaurant_search_provider.dart';
 import 'package:restaurant_app/provider/scheduling_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'common/styles.dart';
 import 'data/api/api_service.dart';
 import 'data/db/database_helper.dart';
+import 'data/prefrences/preferences_helper.dart';
 import 'pages/pages.dart';
 import 'utils/background_service.dart';
 import 'utils/notification_helper.dart';
@@ -34,7 +37,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -56,16 +59,23 @@ class _MyAppState extends State<MyApp> {
       providers: [
         ChangeNotifierProvider(
           create: (context) => RestaurantSearchProvider(
-              apiService: ApiService(), query: SearchPage.query),
+              apiService: ApiService(Client()), query: SearchPage.query),
         ),
         ChangeNotifierProvider(
           create: (context) =>
               DatabaseProvider(databaseHelper: DatabaseHelper()),
         ),
-        ChangeNotifierProvider<SchedulingProvider>(
+        ChangeNotifierProvider(
           create: (_) => SchedulingProvider(),
           child: const SettingsPage(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => PreferencesProvider(
+            preferencesHelper: PreferencesHelper(
+              sharedPreferences: SharedPreferences.getInstance(),
+            ),
+          ),
+        )
       ],
       child: MaterialApp(
         navigatorKey: navigatorKey,

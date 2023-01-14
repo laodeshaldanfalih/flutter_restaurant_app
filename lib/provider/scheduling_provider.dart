@@ -9,7 +9,7 @@ class SchedulingProvider extends ChangeNotifier {
 
   bool get isScheduled => _isScheduled;
 
-  Future<bool> scheduledNews(bool value) async {
+  Future<bool> scheduledRestaurant(bool value) async {
     _isScheduled = value;
     if (_isScheduled) {
       print('Scheduling News Activated');

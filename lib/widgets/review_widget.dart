@@ -3,7 +3,7 @@ import 'package:restaurant_app/data/model/model.dart';
 
 class ReviewWidget extends StatelessWidget {
   final Restaurantt restaurant;
-  const ReviewWidget({super.key, required this.restaurant});
+  const ReviewWidget({Key? key, required this.restaurant}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

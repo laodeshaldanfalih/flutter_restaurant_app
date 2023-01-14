@@ -9,7 +9,9 @@ import '../widgets/widgets.dart';
 class FavoriteRestaurantPage extends StatelessWidget {
   static const routeName = '/favorite-restaurant';
   static const String favoritesTitle = 'Favorites';
-  const FavoriteRestaurantPage({super.key});
+  const FavoriteRestaurantPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

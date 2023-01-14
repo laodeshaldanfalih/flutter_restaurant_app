@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:restaurant_app/data/model/restaurant_search.dart';
@@ -10,6 +11,7 @@ final selectNotificationSubject = BehaviorSubject<String>();
 
 class NotificationHelper {
   static NotificationHelper? _instance;
+  Random random = new Random();
 
   NotificationHelper._internal() {
     _instance = this;
@@ -62,7 +64,8 @@ class NotificationHelper {
         iOS: iOSPlatformChannelSpecifics);
 
     var titleNotification = "<b>Restaurant News</b>";
-    var titleNews = restaurants.restaurants[0].name;
+    var titleNews = restaurants
+        .restaurants[random.nextInt(restaurants.restaurants.length)].name;
 
     await flutterLocalNotificationsPlugin.show(
         0, titleNotification, titleNews, platformChannelSpecifics,
@@ -73,8 +76,8 @@ class NotificationHelper {
     selectNotificationSubject.stream.listen(
       (String payload) async {
         var data = RestaurantSearch.fromJson(json.decode(payload));
-        var restaurant = data.restaurants[0];
-        Navigation.intentWithData(route, restaurant);
+        // var restaurant = data.restaurants[0];
+        Navigation.intentWithData(route, data);
       },
     );
   }
