@@ -8,7 +8,7 @@ Restaurant Finder App
 - Search Restaurants
 - Notification Schedule (Android Only)
 
-## Documentaion
+## Documentation
 
 ![Group 8750](https://user-images.githubusercontent.com/94110205/213743061-07f30c57-2c50-4791-a28e-ea98839ceea7.png)
 
