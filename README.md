@@ -1,16 +1,25 @@
 # restaurant_app
 
-A new Flutter project.
+Restaurant Finder App
 
-## Getting Started
+## Fiture
 
-This project is a starting point for a Flutter application.
+- Add Favorites Restaurant
+- Search Restaurants
+- Notification Schedule (Android Only)
 
-A few resources to get you started if this is your first Flutter project:
+## Documentaion
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Group 8750](https://user-images.githubusercontent.com/94110205/213743061-07f30c57-2c50-4791-a28e-ea98839ceea7.png)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://user-images.githubusercontent.com/94110205/213744551-e1dc476b-4b7e-4712-8e4b-d994b0033f4e.mp4
+
+## How To Use?
+
+1. Download or clone repo
+2. run "flutter pub get"
+3. Enjoy...
+
+## Find Me ?
+
+linkedin.com/in/laodeshaldanfalih
